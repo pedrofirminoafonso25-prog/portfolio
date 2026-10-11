@@ -1,10 +1,9 @@
 // ============================================================
-// ALTERE AQUI AS INFORMAÇÕES DO PORTFÓLIO
+// PORTFÓLIO - Pedro Firmino Afonso
+// JavaScript de interatividade
 // ============================================================
-// Nome, bio, links e tecnologias podem ser alterados diretamente
-// no arquivo index.html, nas seções correspondentes.
-//
-// O JavaScript abaixo gerencia apenas a interatividade do site.
+// As informações do portfólio (nome, bio, links, projetos) estão
+// no arquivo index.html. Este script cuida apenas da interação.
 // ============================================================
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -19,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (menuToggle && nav) {
         menuToggle.addEventListener('click', function() {
             nav.classList.toggle('open');
-            // Alterna ícone
             if (nav.classList.contains('open')) {
                 menuIcon.className = 'fas fa-times';
                 menuToggle.setAttribute('aria-label', 'Fechar menu');
@@ -51,8 +49,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ============================================================
-    // 2. SCROLL SUAVE (já nativo com scroll-behavior: smooth no CSS)
-    //    Mas garantimos comportamento consistente.
+    // 2. SCROLL SUAVE
+    //    (o CSS já tem scroll-behavior: smooth, mas garantimos
+    //     offset do header fixo para não cortar o título)
     // ============================================================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -74,7 +73,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // 3. HEADER SCROLL EFFECT
     // ============================================================
     const header = document.getElementById('header');
-    let lastScroll = 0;
 
     window.addEventListener('scroll', function() {
         const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
@@ -84,8 +82,6 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             header.classList.remove('scrolled');
         }
-
-        lastScroll = currentScroll;
     });
 
     // ============================================================
@@ -139,10 +135,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // ============================================================
     // 6. ANIMAÇÕES AO APARECER (Intersection Observer)
+    //    Inclui os novos cards de projeto, stats e grupos de tech.
     // ============================================================
-    // Anima cards e seções com fade-in suave
     const animarElementos = document.querySelectorAll(
-        '.sobre-grid, .tecnologias-grid, .projeto-card, .contacto-grid'
+        '.sobre-grid, .tecnologias-grid, .projeto-card, .projetos-grid, .contacto-grid, .stat-card, .tech-group'
     );
 
     const observer = new IntersectionObserver((entries) => {
@@ -150,6 +146,8 @@ document.addEventListener('DOMContentLoaded', function() {
             if (entry.isIntersecting) {
                 entry.target.style.opacity = '1';
                 entry.target.style.transform = 'translateY(0)';
+                // deixa de observar depois de animar (melhora performance)
+                observer.unobserve(entry.target);
             }
         });
     }, {
@@ -167,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // ============================================================
     // 7. EFEITO DE DIGITAÇÃO NO TÍTULO (opcional)
     //    Descomente se quiser um efeito de digitação.
-    //    Atenção: requer ajuste no HTML (hero-name com id)
+    //    Requer ajuste no HTML (hero-name com id="heroName").
     // ============================================================
     // const nomeElemento = document.getElementById('heroName');
     // if (nomeElemento) {
