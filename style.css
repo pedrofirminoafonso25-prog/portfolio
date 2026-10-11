@@ -182,10 +182,29 @@ img {
     font-size: 0.75rem;
 }
 
-/* Botões pequenos dentro dos cards de projeto */
-.projeto-links .btn-small {
-    flex: 1;
-    min-width: 0;
+/* ===== BOTÃO ÍCONE REDONDO (usado nos cards de projeto) ===== */
+.btn-icon {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    border-radius: 50%;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    transition: all var(--transition);
+    flex-shrink: 0;
+}
+
+.btn-icon:hover {
+    background: var(--accent-light);
+    color: #fff;
+    border-color: var(--accent-light);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px var(--accent-glow);
 }
 
 /* ============================================================
@@ -715,7 +734,7 @@ img {
     color: #0a0a0a;
 }
 
-/* ===== TAGS NOVAS (Gerador de QR Code) ===== */
+/* ===== TAGS DO GERADOR DE QR CODE ===== */
 .tag-html {
     background: #e34c26;
     color: #fff;
@@ -775,20 +794,27 @@ img {
     font-size: 0.6rem;
 }
 
+/* ===== LINKS DOS PROJETOS (botões ícone redondos) ===== */
 .projeto-links {
     display: flex;
-    gap: 10px;
+    gap: 8px;
     margin-top: 14px;
     flex-wrap: wrap;
+    align-items: center;
 }
 
+/* Botão principal do destaque (com texto) continua normal */
+.projeto-destaque .projeto-links .btn-github {
+    width: auto;
+}
+
+/* Nos cards da grade, empurra os botões pro fundo */
 .projetos-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 16px;
 }
 
-/* Cards da grade com altura uniforme e botões alinhados em baixo */
 .projetos-grid .projeto-card {
     display: flex;
     flex-direction: column;
@@ -797,6 +823,7 @@ img {
 .projetos-grid .projeto-card .projeto-links,
 .projetos-grid .projeto-card > .btn {
     margin-top: auto;
+    padding-top: 14px;
 }
 
 .projeto-secundario .projeto-icon {
@@ -947,7 +974,7 @@ img {
 }
 
 /* ============================================================
-   RESPONSIVIDADE - TABLET (768px - 1024px)
+   RESPONSIVIDADE - TABLET (768px+)
    ============================================================ */
 @media (min-width: 768px) {
     .container {
@@ -1215,14 +1242,5 @@ img {
     .hero-buttons .btn {
         flex: 1;
         min-width: 120px;
-    }
-}
-
-/* ============================================================
-   AJUSTE EXTRA - BOTÕES DOS CARDS EM TELAS MUITO ESTREITAS
-   ============================================================ */
-@media (max-width: 380px) {
-    .projeto-links {
-        flex-direction: column;
     }
 }
