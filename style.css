@@ -182,6 +182,12 @@ img {
     font-size: 0.75rem;
 }
 
+/* Botões pequenos dentro dos cards de projeto */
+.projeto-links .btn-small {
+    flex: 1;
+    min-width: 0;
+}
+
 /* ============================================================
    HEADER
    ============================================================ */
@@ -709,6 +715,22 @@ img {
     color: #0a0a0a;
 }
 
+/* ===== TAGS NOVAS (Gerador de QR Code) ===== */
+.tag-html {
+    background: #e34c26;
+    color: #fff;
+}
+
+.tag-css {
+    background: #264de4;
+    color: #fff;
+}
+
+.tag-js {
+    background: #f7df1e;
+    color: #0a0a0a;
+}
+
 .projeto-title {
     font-size: 1.2rem;
     font-weight: 700;
@@ -764,6 +786,17 @@ img {
     display: grid;
     grid-template-columns: 1fr;
     gap: 16px;
+}
+
+/* Cards da grade com altura uniforme e botões alinhados em baixo */
+.projetos-grid .projeto-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.projetos-grid .projeto-card .projeto-links,
+.projetos-grid .projeto-card > .btn {
+    margin-top: auto;
 }
 
 .projeto-secundario .projeto-icon {
@@ -1095,7 +1128,7 @@ img {
 }
 
 /* ============================================================
-   MENU MOBILE (aparece apenas em telas menores que 768px)
+   MENU MOBILE (telas menores que 768px)
    ============================================================ */
 @media (max-width: 767px) {
     .nav {
@@ -1136,7 +1169,6 @@ img {
         display: flex;
     }
 
-    /* Overlay escuro quando menu está aberto */
     .nav.open::before {
         content: '';
         position: fixed;
@@ -1148,7 +1180,6 @@ img {
         z-index: -1;
     }
 
-    /* Ajuste do header no mobile */
     .header-container {
         padding: 0 12px;
     }
@@ -1184,5 +1215,14 @@ img {
     .hero-buttons .btn {
         flex: 1;
         min-width: 120px;
+    }
+}
+
+/* ============================================================
+   AJUSTE EXTRA - BOTÕES DOS CARDS EM TELAS MUITO ESTREITAS
+   ============================================================ */
+@media (max-width: 380px) {
+    .projeto-links {
+        flex-direction: column;
     }
 }
